@@ -1,0 +1,18 @@
+<div class=" w-full flex flex-col justify-center items-center">
+    <div
+        class="bg-white rounded-md w-1/2 flex flex-col items-center m-5 p-6 mat-elevation-z5 border border-gray-200 gap-y-2">
+        <app-unicorn-card *ngIf="doBabyService.firstUnicorn" [unicorn]="doBabyService.firstUnicorn" [origin]="'doBaby'">
+        </app-unicorn-card>
+        <span class="text-7xl">+</span>
+        <app-unicorn-card *ngIf="doBabyService.secondUnicorn" [unicorn]="doBabyService.secondUnicorn"
+            [origin]="'doBaby'"></app-unicorn-card>
+        <span class="text-7xl">=</span>
+        <button type="button" *ngIf="!this.babyUnicorn"
+            class="p-4 bg-orange-500 rounded-lg hover:bg-orange-600 text-2xl" (click)="createBaby()">Faire un
+            magnifique bébé</button>
+        <app-unicorn-card *ngIf="this.babyUnicorn" [unicorn]="this.babyUnicorn" [origin]="'doBaby'"></app-unicorn-card>
+        <button *ngIf="this.babyUnicorn" type="button"
+            class="p-4 bg-orange-500 rounded-lg hover:bg-orange-600 text-2xl" (click)="valider()">Valider</button>
+    </div>
+
+</div>

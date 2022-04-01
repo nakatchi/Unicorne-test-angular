@@ -1,0 +1,30 @@
+<div class=" w-full flex flex-col justify-center items-center">
+    <form [formGroup]="unicornProfilForm" (ngSubmit)="unicornProfilSubmit()"
+        class="bg-white rounded-md w-1/2 flex flex-col items-center m-5 p-6 mat-elevation-z5 border border-gray-200 gap-y-2">
+        <div class="w-full">
+            <label for="first-name">Nom : </label>
+            <input id="first-name" type="text" formControlName="name" required
+                class="w-full rounded  p-1 border border-black bg-orange-50" placeholder="Entrez votre nom">
+        </div>
+        <div class="w-full flex content-center items-center gap-x-2">
+            <label for="last-name">Color: </label>
+            <input id="last-name" type="text" oninput="this.value=this.value.replace(/[^0-9A-Fa-f]/g,'')" required
+                formControlName="color" class="w-full p-1 rounded  border border-black bg-orange-50" maxlength="6" placeholder="Entrez votre couleur">
+                <div class="h-6 w-1/4 rounded-md border border-black" [ngStyle]="{'background-color': '#' + unicornProfilForm.get('color').value }"></div>
+        </div>
+        {{unicornProfilForm.get('color').value}}
+        <mat-radio-group class="flex gap-x-2 w-full" formGroupName="gender">
+            <label>Genre :</label>
+            <mat-radio-button ngDefaultControl formControlName="value" value="male">Masculin</mat-radio-button>
+            <mat-radio-button ngDefaultControl formControlName="value" value="female">Feminim</mat-radio-button>
+            <mat-radio-button ngDefaultControl formControlName="value" value="other">Autre</mat-radio-button>
+            <input id="last-name" formControlName="other" type="text" class="rounded p-1 border border-black bg-orange-50">
+        </mat-radio-group>
+        <div class="w-full">
+            <label for="last-name">Age : </label>
+            <input id="last-name" type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                formControlName="age" class="w-full rounded p-1 border border-black bg-orange-50" maxlength="3" placeholder="Entrez votre age" required>
+        </div>
+        <button type="submit" class="p-2 bg-orange-500 w-1/6 rounded-lg hover:bg-orange-600 text-2xl disabled:bg-gray-300 disabled:text-gray-500" [disabled]="unicornProfilForm.invalid">Créer</button>
+    </form>
+</div>

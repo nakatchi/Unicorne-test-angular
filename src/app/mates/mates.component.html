@@ -1,0 +1,26 @@
+<div class=" w-full flex flex-col justify-center items-center">
+    <div
+        class="bg-white rounded-md w-1/2 flex flex-col items-center m-5 p-6 mat-elevation-z5 border border-gray-200 gap-y-2">
+        <span class="text-3xl">Voulez vous mettre :</span>
+        <app-unicorn-card *ngIf="matesService.nextUnicorn" [unicorn]="matesService.nextUnicorn" [origin]="'mates'">
+        </app-unicorn-card>
+        <span class="text-3xl">En couple avec :</span>
+
+        <mat-form-field>
+            <mat-select placeholder="Nom de licorne" [(value)]="selectedUnicorn">
+                <div *ngFor="let unicorn of dataGlobal.unicornList" >
+                    <mat-option  *ngIf="!unicorn.mateUnicorn" [value]="unicorn">
+                        {{ unicorn.name }}
+                    </mat-option>
+                </div>
+            </mat-select>
+        </mat-form-field>
+        <!-- <select class="h-6 w-1/4 rounded-md border border-black" [(ngModel)]="selectedUnicorn">
+            <option *ngFor="let unicorn of dataGlobal.unicornList" value="unicorn">{{unicorn.name}}</option>
+        </select> -->
+        <app-unicorn-card *ngIf="selectedUnicorn" [unicorn]="selectedUnicorn" [origin]="'mates'"></app-unicorn-card>
+        <button *ngIf="selectedUnicorn" class="py-2 px-4 bg-orange-500 rounded-lg hover:bg-orange-600 text-2xl"
+            (click)="createMates()">Valider</button>
+    </div>
+
+</div>

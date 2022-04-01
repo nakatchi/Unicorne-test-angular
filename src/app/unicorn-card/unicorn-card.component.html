@@ -1,0 +1,12 @@
+<div class="rounded-md flex flex-col justify-center items-center mat-elevation-z5 m-5 gap-y-5">
+    <header class="w-full p-3 h-10 rounded-t-md " [ngStyle]="{'background-color': '#' +unicorn.color}"></header>
+    <div class="bg-white w-full m-5 grid grid-cols-2 gap-y-4 p-5">
+        <span class="text-lg">Nom : {{unicorn.name}}</span>
+        <span class="text-lg">Couleur : #{{unicorn.color}}</span>
+        <span class="text-lg">Genre : {{unicorn.gender == 'other' ? unicorn.other : unicorn.gender}}</span>
+        <span class="text-lg">age : {{unicorn.age}}</span>
+        <span *ngIf="unicorn.mateUnicorn && unicornMate" class="text-lg">En couple avec : {{unicornMate.name}}</span>
+        <button *ngIf="origin == 'home' &&  !unicorn.mateUnicorn" type="submit" class="p-2 bg-orange-500 rounded-lg hover:bg-orange-600" (click)="redirectToMates()">Mettre en couple</button>
+        <button *ngIf="origin == 'home' && unicorn.mateUnicorn && canDoBaby()" type="submit" class="p-2 bg-orange-500 rounded-lg hover:bg-orange-600" (click)="redirectDoBaby()">Faire un bébé</button>
+    </div>
+</div>

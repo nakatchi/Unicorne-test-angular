@@ -1,0 +1,10 @@
+<div class="w-full flex flex-row flex-wrap justify-center items-stretch gap-5">
+    <app-unicorn-card *ngFor="let unicorn of dataglobal.unicornList" [unicorn]="unicorn" [origin]="'home'" class="shrink-0 justify-self-auto"></app-unicorn-card>
+</div>
+<div *ngIf="dataglobal.unicornList.length === 0" class=" w-full flex flex-col justify-center items-center mt-5">
+    <div
+        class="bg-white rounded-md w-1/2 flex flex-col items-center text-center m-5 p-6 mat-elevation-z5 border border-gray-200 gap-y-2">
+        <p class="text-3xl mt-5">Il n'y a malheureusement aucune licorne pour le moment.</p>
+        <button type="button" class="p-2 m-5 bg-orange-500 rounded-lg hover:bg-orange-600 text-2xl" routerLink="/create">Créer une licorne</button>
+    </div>
+</div>
